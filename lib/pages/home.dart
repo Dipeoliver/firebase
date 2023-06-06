@@ -32,13 +32,6 @@ class _HomePageState extends State<HomePage> {
     return Text(user?.email ?? "User mail");
   }
 
-  Widget _signOutButton() {
-    return ElevatedButton(
-      onPressed: sigNout,
-      child: const Text('Sign Out'),
-    );
-  }
-
   @override
   void initState() {
     super.initState();
@@ -87,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                     IconButton(
                       color: Colors.white,
                       iconSize: 40.0,
-                      icon: const Icon(Icons.account_circle_outlined),
+                      icon: const Icon(Icons.exit_to_app),
                       tooltip: 'Sign Out',
                       onPressed: sigNout,
                     ), //IconButton
