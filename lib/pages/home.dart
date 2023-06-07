@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase/auth.dart';
 
+import '../text_style.dart';
+
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
@@ -42,6 +44,100 @@ class HomePage extends StatelessWidget {
           children: [
             _userUid(),
             _signOutButton(),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: Image.asset(
+                                      'assets/images/recovery.png')),
+                              const Text(
+                                'Japan Food',
+                                style: kBodyTextBlack,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: Image.asset(
+                                      'assets/images/recovery.png')),
+                              const Text(
+                                'USA Food',
+                                style: kBodyTextBlack,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: Image.asset(
+                                      'assets/images/recovery.png')),
+                              const Text(
+                                'Brasil Food',
+                                style: kBodyTextBlack,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: Image.asset(
+                                      'assets/images/recovery.png')),
+                              const Text(
+                                'Mexican Food',
+                                style: kBodyTextBlack,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
