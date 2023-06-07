@@ -2,10 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase/auth.dart';
 
-import '../text_style.dart';
+import '../models/foods.dart';
+import '../models/foods_api.dart';
+import '../utils/image_constants.dart';
+import '../widgets/recipe_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late List<Foods> _recipes;
+  bool _isLoading = true;
 
   final User? user = Auth().currentUser;
 
@@ -14,133 +25,77 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _title() {
-    return const Text('Firebase Auth');
+    return const Text('Foods VNT');
   }
 
   Widget _userUid() {
     return Text(user?.email ?? "User mail");
   }
 
-  Widget _signOutButton() {
-    return ElevatedButton(
-      onPressed: sigNout,
-      child: const Text('Sign Out'),
-    );
+  @override
+  void initState() {
+    super.initState();
+    getRecipes();
+  }
+
+  Future<void> getRecipes() async {
+    _recipes = await FoodsApi.getRecipe();
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: _title(),
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _userUid(),
-            _signOutButton(),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        child: Card(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                  child: Image.asset(
-                                      'assets/images/recovery.png')),
-                              const Text(
-                                'Japan Food',
-                                style: kBodyTextBlack,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : CustomScrollView(
+              slivers: <Widget>[
+                SliverAppBar(
+                  snap: false,
+                  pinned: true,
+                  floating: false,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: Image.network(
+                      ImageConstants.bg_italian_food,
+                      fit: BoxFit.cover,
                     ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        child: Card(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                  child: Image.asset(
-                                      'assets/images/recovery.png')),
-                              const Text(
-                                'USA Food',
-                                style: kBodyTextBlack,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                    centerTitle: true,
+                    title: const Text("Italian Foods",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        ) //TextStyle
+                        ), //Text
+                  ), //FlexibleSpaceBar
+                  expandedHeight: 200,
+                  backgroundColor: const Color.fromARGB(255, 128, 7, 4),
+                  leading: IconButton(
+                    icon: Image.asset('assets/images/logo.png'),
+                    tooltip: 'Menu',
+                    onPressed: () {},
+                  ), //IconButton
+                  actions: <Widget>[
+                    IconButton(
+                      color: Colors.white,
+                      iconSize: 40.0,
+                      icon: const Icon(Icons.exit_to_app),
+                      tooltip: 'Sign Out',
+                      onPressed: sigNout,
+                    ), //IconButton
+                  ], //<Widget>[]
+                ), //SliverAppB
+                SliverList.builder(
+                  itemCount: _recipes.length,
+                  itemBuilder: (context, index) {
+                    return RecipeCard(
+                        title: _recipes[index].name,
+                        thumbnailUrl: _recipes[index].images);
+                  },
+                )
+              ],
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        child: Card(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                  child: Image.asset(
-                                      'assets/images/recovery.png')),
-                              const Text(
-                                'Brasil Food',
-                                style: kBodyTextBlack,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        child: Card(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                  child: Image.asset(
-                                      'assets/images/recovery.png')),
-                              const Text(
-                                'Mexican Food',
-                                style: kBodyTextBlack,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
