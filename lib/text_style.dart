@@ -13,7 +13,7 @@ const TextStyle kBodyText = TextStyle(
 
 const TextStyle kBodyTextBlack = TextStyle(
   fontSize: 18,
-  color: Colors.white,
+  color: Colors.black,
 );
 
 const TextStyle kSubBodyText = TextStyle(

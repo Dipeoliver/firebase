@@ -1,3 +1,4 @@
+import 'package:firebase/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase/auth.dart';
@@ -7,14 +8,14 @@ import '../models/foods_api.dart';
 import '../utils/image_constants.dart';
 import '../widgets/recipe_card.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({super.key});
+class ListPage extends StatefulWidget {
+  ListPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ListPage> createState() => _ListPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ListPageState extends State<ListPage> {
   late List<Foods> _recipes;
   bool _isLoading = true;
 
@@ -80,9 +81,16 @@ class _HomePageState extends State<HomePage> {
                     IconButton(
                       color: Colors.white,
                       iconSize: 40.0,
-                      icon: const Icon(Icons.exit_to_app),
-                      tooltip: 'Sign Out',
-                      onPressed: sigNout,
+                      icon: const Icon(Icons.home),
+                      tooltip: 'Home Page',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      },
                     ), //IconButton
                   ], //<Widget>[]
                 ), //SliverAppB
