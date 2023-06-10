@@ -67,8 +67,11 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/italy.png')),
+                                child: Image.asset(
+                                  'assets/images/italy.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
                               const Text(
                                 'Italian Food',
                                 style: kBodyTextBlack,
@@ -87,8 +90,11 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/mexico.png')),
+                                child: Image.asset(
+                                  'assets/images/mexico.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
                               const Text(
                                 'Mexican Food',
                                 style: kBodyTextBlack,
@@ -114,8 +120,11 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/germany.png')),
+                                child: Image.asset(
+                                  'assets/images/germany.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
                               const Text(
                                 'Germany Food',
                                 style: kBodyTextBlack,
@@ -134,8 +143,11 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/japan.png')),
+                                child: Image.asset(
+                                  'assets/images/japan.png',
+                                  fit: BoxFit.fitHeight,
+                                ),
+                              ),
                               const Text(
                                 'Japan Food',
                                 style: kBodyTextBlack,
