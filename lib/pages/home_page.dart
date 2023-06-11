@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ListPage(),
+                            builder: (context) => ListPage('Italian'),
                           ),
                         );
                       },
@@ -67,8 +67,10 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/italy.png')),
+                                  child: Image.asset(
+                                'assets/images/italy.png',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
                                 'Italian Food',
                                 style: kBodyTextBlack,
@@ -81,7 +83,14 @@ class HomePage extends StatelessWidget {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListPage('Mexican'),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Card(
                           child: Column(
@@ -108,7 +117,14 @@ class HomePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListPage('German'),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Card(
                           child: Column(
@@ -128,7 +144,14 @@ class HomePage extends StatelessWidget {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListPage('Japanese'),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Card(
                           child: Column(
