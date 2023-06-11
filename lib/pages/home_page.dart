@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase/auth.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../text_style.dart';
 import 'list_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String userName = "";
 
   final User? user = Auth().currentUser;
 
@@ -15,15 +22,39 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _title() {
-    return const Text('Firebase Auth');
+    return const Text('Foods VNT');
   }
 
-  Widget _userUid() {
-    return Text(user?.email ?? "User mail");
+  Future<void> readUser() async {
+    try {
+      DocumentReference documentReference =
+          FirebaseFirestore.instance.collection("UserId").doc(user?.email);
+
+      await documentReference.get().then((datasnapshot) {
+        setState(() {
+          userName = datasnapshot['name'];
+        });
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Row(
+          children: [
+            const Icon(
+              Icons.error_outline,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 8),
+            Text(e.toString()),
+          ],
+        ),
+        backgroundColor: Color.fromARGB(255, 128, 7, 4),
+      ));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    readUser();
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -45,7 +76,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome: ${user?.email ?? "User mail".toString()}',
+              'Welcome: ' + userName,
               style: kBodyTextBlack,
             ),
             Expanded(

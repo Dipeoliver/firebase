@@ -7,7 +7,6 @@ import '../auth.dart';
 import '../text_style.dart';
 import '../widgets/background-image.dart';
 import '../widgets/input-field.dart';
-import '../widgets/text_form_field_password.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUp extends StatefulWidget {
