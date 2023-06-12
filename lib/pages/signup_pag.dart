@@ -7,7 +7,7 @@ import '../auth.dart';
 import '../text_style.dart';
 import '../widgets/background-image.dart';
 import '../widgets/input-field.dart';
-import '../widgets/text_form_field_password.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -58,6 +58,23 @@ class _SignUpState extends State<SignUp> {
         ),
         backgroundColor: Color.fromARGB(255, 128, 7, 4),
       ));
+    }
+  }
+
+  saveUser() {
+    try {
+      DocumentReference documentReference = FirebaseFirestore.instance
+          .collection("UserId")
+          .doc(_controllerEmail.text);
+
+      Map<String, dynamic> User = {
+        "name": _controllerName.text,
+        "email": _controllerEmail.text
+      };
+
+      documentReference.set(User).whenComplete(() => {});
+    } catch (e) {
+      print(e.toString() + "!!!!!!!ERRO AO Salvar");
     }
   }
 
@@ -124,6 +141,7 @@ class _SignUpState extends State<SignUp> {
             loading.value = false;
           } else {
             createUserWithEmailAndPassword();
+            saveUser();
           }
         },
       ),

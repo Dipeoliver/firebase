@@ -108,12 +108,7 @@ class _ListPageState extends State<ListPage> {
                       icon: const Icon(Icons.home),
                       tooltip: 'Home Page',
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
+                        Navigator.pop(context, false);
                       },
                     ), //IconButton
                   ], //<Widget>[]
