@@ -67,8 +67,14 @@ class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _isLoading ? Colors.black : Colors.white,
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(
+              child: CircularProgressIndicator(
+              backgroundColor: Colors.white,
+              strokeWidth: 8,
+              color: Color.fromARGB(255, 128, 7, 4),
+            ))
           : CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(

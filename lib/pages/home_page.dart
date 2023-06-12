@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _title() {
-    return const Text('Firebase Auth');
+    return const Text('Foods VNT', style: TextStyle(color: Colors.white));
   }
 
   Widget _userUid() {
@@ -26,8 +26,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 128, 7, 4),
         actions: [
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.logout),
             onPressed: () {
               sigNout();
@@ -39,7 +46,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -64,16 +71,18 @@ class HomePage extends StatelessWidget {
                       },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
                                   child: Image.asset(
-                                'assets/images/italy.png',
+                                'assets/images/home_page_italian.jpg',
                                 fit: BoxFit.cover,
                               )),
                               const Text(
                                 'Italian Food',
-                                style: kBodyTextBlack,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
@@ -93,14 +102,18 @@ class HomePage extends StatelessWidget {
                       },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/mexico.png')),
+                                  child: Image.asset(
+                                'assets/images/home_page_mexican.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
                                 'Mexican Food',
-                                style: kBodyTextBlack,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
@@ -127,14 +140,18 @@ class HomePage extends StatelessWidget {
                       },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/germany.png')),
+                                  child: Image.asset(
+                                'assets/images/home_page_german.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
-                                'Germany Food',
-                                style: kBodyTextBlack,
+                                'German Food',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
@@ -154,14 +171,18 @@ class HomePage extends StatelessWidget {
                       },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                  child:
-                                      Image.asset('assets/images/japan.png')),
+                                  child: Image.asset(
+                                'assets/images/home_page_japanese.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
                                 'Japan Food',
-                                style: kBodyTextBlack,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
