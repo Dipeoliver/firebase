@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _title() {
-    return const Text('Foods VNT');
+    return const Text('Foods VNT', style: TextStyle(color: Colors.white));
   }
 
   Future<void> readUser() async {
@@ -57,8 +57,15 @@ class _HomePageState extends State<HomePage> {
     readUser();
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 128, 7, 4),
         actions: [
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.logout),
             onPressed: () {
               sigNout();
@@ -70,7 +77,7 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,23 +96,24 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ListPage(),
+                            builder: (context) => ListPage('Italian'),
                           ),
                         );
                       },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                child: Image.asset(
-                                  'assets/images/italy.png',
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
+                                  child: Image.asset(
+                                'assets/images/home_page_italian.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
                                 'Italian Food',
-                                style: kBodyTextBlack,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
@@ -115,20 +123,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListPage('Mexican'),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                child: Image.asset(
-                                  'assets/images/mexico.png',
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
+                                  child: Image.asset(
+                                'assets/images/home_page_mexican.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
                                 'Mexican Food',
-                                style: kBodyTextBlack,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
@@ -145,20 +161,28 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListPage('German'),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                child: Image.asset(
-                                  'assets/images/germany.png',
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
+                                  child: Image.asset(
+                                'assets/images/home_page_german.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
-                                'Germany Food',
-                                style: kBodyTextBlack,
+                                'German Food',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),
@@ -168,20 +192,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListPage('Japanese'),
+                          ),
+                        );
+                      },
                       child: Container(
                         child: Card(
+                          color: const Color.fromARGB(255, 128, 7, 4),
                           child: Column(
                             children: [
                               Expanded(
-                                child: Image.asset(
-                                  'assets/images/japan.png',
-                                  fit: BoxFit.fitHeight,
-                                ),
-                              ),
+                                  child: Image.asset(
+                                'assets/images/home_page_japanese.jpg',
+                                fit: BoxFit.cover,
+                              )),
                               const Text(
                                 'Japan Food',
-                                style: kBodyTextBlack,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
                               ),
                             ],
                           ),

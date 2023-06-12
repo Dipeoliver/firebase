@@ -38,6 +38,10 @@ flutter:
     - assets/images/japan.png
     - assets/images/mexico.png
     - assets/images/germany.png
+    - assets/images/home_page_italian.jpg
+    - assets/images/home_page_mexican.jpg
+    - assets/images/home_page_german.jpg
+    - assets/images/home_page_japanese.jpg
 
 flutter_native_splash:
   image: "assets/images/logo_v.png"

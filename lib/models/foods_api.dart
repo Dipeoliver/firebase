@@ -5,9 +5,9 @@ import '../utils/api_constants.dart';
 import 'foods.dart';
 
 class FoodsApi {
-  static Future<List<Foods>> getRecipe() async {
+  static Future<List<Foods>> getRecipe(String countryKey) async {
     var uri = Uri.https(ApiConstants.baseUrl, ApiConstants.usersEndpoint,
-        {"query": "pizza", ApiConstants.apiKey: ApiConstants.apiKeyValue});
+        {"query": countryKey, ApiConstants.apiKey: ApiConstants.apiKeyValue});
 
     final response = await http.get(uri, headers: {
       ApiConstants.ContentType: ApiConstants.ContentTypeValue,

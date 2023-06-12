@@ -9,7 +9,9 @@ import '../utils/image_constants.dart';
 import '../widgets/recipe_card.dart';
 
 class ListPage extends StatefulWidget {
-  ListPage({super.key});
+  final String countryKey;
+
+  ListPage(this.countryKey, {super.key});
 
   @override
   State<ListPage> createState() => _ListPageState();
@@ -40,17 +42,39 @@ class _ListPageState extends State<ListPage> {
   }
 
   Future<void> getRecipes() async {
-    _recipes = await FoodsApi.getRecipe();
+    _recipes = await FoodsApi.getRecipe(widget.countryKey);
     setState(() {
       _isLoading = false;
     });
   }
 
+  String getCountryAppBar(String countryKey) {
+    switch (countryKey) {
+      case "Italian":
+        return ImageConstants.bg_italian_food;
+        break;
+      case "German":
+        return ImageConstants.bg_germany_food;
+        break;
+      case "Mexican":
+        return ImageConstants.bg_mexican_food;
+        break;
+      default:
+        return ImageConstants.bg_japanese_food;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _isLoading ? Colors.black : Colors.white,
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(
+              child: CircularProgressIndicator(
+              backgroundColor: Colors.white,
+              strokeWidth: 8,
+              color: Color.fromARGB(255, 128, 7, 4),
+            ))
           : CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(
@@ -59,12 +83,12 @@ class _ListPageState extends State<ListPage> {
                   floating: false,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Image.network(
-                      ImageConstants.bg_italian_food,
+                      getCountryAppBar(widget.countryKey),
                       fit: BoxFit.cover,
                     ),
                     centerTitle: true,
-                    title: const Text("Italian Foods",
-                        style: TextStyle(
+                    title: Text(widget.countryKey,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
                         ) //TextStyle
